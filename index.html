@@ -28,7 +28,6 @@
             --accent-gradient: linear-gradient(135deg, #00B4DB, #0083B0);
             --accent-glow: rgba(0, 180, 219, 0.3);
             --font-main: 'Inter', sans-serif;
-            --header-height: 56px; /* Optimized height for sub-navigation headers */
         }
 
         body {
@@ -41,77 +40,16 @@
             min-height: 100vh;
         }
 
-        /* --- App Header (Glassmorphism) --- */
-        .app-header {
-            height: var(--header-height);
-            background: var(--surface-color);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--surface-border);
-            display: flex;
-            align-items: center;
-            padding: 0 16px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
-        }
-
-        .nav-btn {
-            background: transparent;
-            border: none;
-            color: var(--text-primary);
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-        }
-
-        .nav-btn:active {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .brand-container {
-            display: flex;
-            align-items: center;
-            margin-left: 12px;
-        }
-
-        .brand-logo {
-            background: var(--accent-gradient);
-            font-weight: 700;
-            font-size: 13px;
-            width: 32px;
-            height: 32px;
-            border-radius: 10px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 4px 10px var(--accent-glow);
-            margin-right: 12px;
-        }
-
-        .title-container .subtitle {
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--text-primary);
-            display: block;
-        }
-
         /* --- Layout Main Window --- */
         .main-container {
-            margin-top: var(--header-height);
+            margin-top: 0; /* हेडर हटने के बाद इसे बिल्कुल टॉप पर सटा दिया */
             width: 100%;
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
         }
 
-        /* --- Premium Custom Video Player Module --- */
+        /* --- Custom Video Player Module --- */
         .player-wrapper {
             position: relative;
             width: 100%;
@@ -127,7 +65,7 @@
             object-fit: contain;
         }
 
-        /* --- Custom Native Video Loader --- */
+        /* --- Custom Video Loader --- */
         .video-loader {
             position: absolute;
             top: 0;
@@ -458,18 +396,6 @@
 </head>
 <body>
 
-    <header class="app-header">
-        <button class="nav-btn" id="btn-back" onclick="window.history.back();" aria-label="Go Back">
-            <span class="material-icons-round">arrow_back_ios_new</span>
-        </button>
-        <div class="brand-container">
-            <span class="brand-logo">SB</span>
-            <div class="title-container">
-                <span class="subtitle">Study Book Premium</span>
-            </div>
-        </div>
-    </header>
-
     <main class="main-container">
         
         <div class="player-wrapper" id="player-wrapper">
@@ -530,7 +456,7 @@
 
         <section class="meta-section">
             <h2 id="video-title">Loading Class Video...</h2>
-            <p id="video-description">Connecting securely to Study Book servers to load your premium lecture stream.</p>
+            <p id="video-description">Connecting securely to servers to load your lecture stream.</p>
         </section>
 
         <section class="related-section">
@@ -545,7 +471,7 @@
         const state = {
             videoUrl: '',
             videoTitle: 'Premium Course Lecture',
-            videoDesc: 'Welcome to your custom workspace stream on Study Book.',
+            videoDesc: 'Welcome to your custom workspace stream.',
             hideControlsTimeout: null,
             mockRecommendations: [
                 { id: 1, title: '02. Core Architectural Frameworks', duration: '14:25', url: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4' },
